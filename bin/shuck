@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+loop do
+  print "$ "
+
+  command = $stdin.gets
+
+  pid = fork do
+    exec command
+  end
+
+  Process.wait(pid)
+end
+
